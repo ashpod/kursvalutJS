@@ -222,8 +222,6 @@ preg_match("/Евро(\D{0,100})(\d{0,10}.\d{0,10})(<\/span>)/", $html, $evr);
 
         var chr = getChar(e);
 
-        // с null надо осторожно в неравенствах, т.к. например null >= '0' => true!
-        // на всякий случай лучше вынести проверку chr == null отдельно
         if (chr == null) return;
 
         if (chr < '0' || chr > '9') {
@@ -239,8 +237,6 @@ preg_match("/Евро(\D{0,100})(\d{0,10}.\d{0,10})(<\/span>)/", $html, $evr);
 
         var chr = getChar(e);
 
-        // с null надо осторожно в неравенствах, т.к. например null >= '0' => true!
-        // на всякий случай лучше вынести проверку chr == null отдельно
         if (chr == null) return;
 
         if (chr < '0' || chr > '9') {
@@ -252,14 +248,14 @@ preg_match("/Евро(\D{0,100})(\d{0,10}.\d{0,10})(<\/span>)/", $html, $evr);
     function getChar(event) {
         if (event.which == null) {
             if (event.keyCode < 32) return null;
-            return String.fromCharCode(event.keyCode) // IE
+            return String.fromCharCode(event.keyCode) 
         }
 
         if (event.which != 0 && event.charCode != 0) {
             if (event.which < 32) return null;
-            return String.fromCharCode(event.which) // остальные
+            return String.fromCharCode(event.which) 
         }
 
-        return null; // специальная клавиша
+        return null; 
     }
 </script>
